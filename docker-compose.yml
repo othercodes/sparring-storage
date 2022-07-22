@@ -1,0 +1,41 @@
+version: '3'
+networks:
+    sparring:
+        driver: bridge
+
+services:
+    sparring_storage:
+        container_name: sparring_storage
+        image: sparring_storage:latest
+        ports:
+            - "8000:8000"
+        environment:
+            DB_CONNECTION: 'mysql'
+            DB_HOST: "127.0.0.1"
+            DB_PORT: "3306"
+            DB_DATABASE: "sparring"
+            DB_USERNAME: "sparring"
+            DB_PASSWORD: "1q2w3e"
+        networks:
+            - sparring
+
+    sparring_database:
+        image: 'mysql/mysql-server:8.0'
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: '1q2w3e'
+            MYSQL_ROOT_HOST: "localhost"
+            MYSQL_DATABASE: 'sparring'
+            MYSQL_USER: 'sparring'
+            MYSQL_PASSWORD: '1q2w3e'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - './storage/database:/var/lib/mysql'
+        networks:
+            - sparring
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping", "-p1q2w3e" ]
+            retries: 3
+            timeout: 5s
+

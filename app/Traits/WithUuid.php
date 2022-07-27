@@ -6,9 +6,6 @@ use Illuminate\Support\Str;
 
 trait WithUuid
 {
-    protected $keyType = 'string';
-    public $incrementing = false;
-
     protected static function boot() {
         parent::boot();
 

@@ -25,15 +25,11 @@ services:
             - '3306:3306'
         environment:
             MYSQL_ROOT_PASSWORD: '1q2w3e'
-            MYSQL_ROOT_HOST: "localhost"
+            MYSQL_ROOT_HOST: "127.0.0.1"
             MYSQL_DATABASE: 'sparring'
             MYSQL_USER: 'sparring'
             MYSQL_PASSWORD: '1q2w3e'
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
-        volumes:
-            - './storage/database:/var/lib/mysql'
-        networks:
-            - sparring
         healthcheck:
             test: [ "CMD", "mysqladmin", "ping", "-p1q2w3e" ]
             retries: 3

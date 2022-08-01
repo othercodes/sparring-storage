@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Lcobucci\JWT\Configuration;
+use Lcobucci\JWT\Token\Parser;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'v1'
+    'prefix' => 'v1',
+    'middleware' => ['client', 'account']
 ], function(){
     Route::get("health-check", function() {
         return response(200);
     });
-});
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::group([
+        'prefix' => 'reseller'
+    ], function() {
+        Route::get("/", function() {
+            return response()->json([
+                "hey" => request()->user()
+            ],200);
+        });
+    });
 });

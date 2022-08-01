@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Infrastructure\Laravel\Models;
 
-use App\Traits\WithUuid;
+use App\Infrastructure\Laravel\Traits\WithUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

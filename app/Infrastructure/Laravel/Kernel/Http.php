@@ -40,7 +40,6 @@ class Http extends HttpKernel
     protected $middleware = [
         TrustProxies::class,
         HandleCors::class,
-        PreventRequestsDuringMaintenance::class,
         ValidatePostSize::class,
         TrimStrings::class,
         ConvertEmptyStringsToNull::class,

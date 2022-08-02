@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Application\ResellersController;
 use Illuminate\Support\Facades\Route;
-use Lcobucci\JWT\Configuration;
-use Lcobucci\JWT\Token\Parser;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,18 +17,17 @@ use Lcobucci\JWT\Token\Parser;
 Route::group([
     'prefix' => 'v1',
     'middleware' => ['client', 'account']
-], function(){
-    Route::get("health-check", function() {
+], function () {
+    Route::get("health-check", function () {
         return response(200);
     });
 
     Route::group([
-        'prefix' => 'reseller'
-    ], function() {
-        Route::get("/", function() {
-            return response()->json([
-                "hey" => request()->user()
-            ],200);
-        });
+        'prefix' => 'resellers'
+    ], function () {
+        Route::get("/", [ResellersController::class, 'search']);
+        Route::get("/{id}", [ResellersController::class, 'find']);
+        Route::post("/", [ResellersController::class, 'create']);
+        Route::patch("/{id}", [ResellersController::class, 'update']);
     });
 });

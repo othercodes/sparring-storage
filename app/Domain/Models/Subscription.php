@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Infrastructure\Laravel\Models;
+namespace App\Domain\Models;
 
 use App\Infrastructure\Laravel\Traits\WithUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-final class Subscription extends Model
+class Subscription extends Model
 {
     use HasFactory, WithUuid;
 

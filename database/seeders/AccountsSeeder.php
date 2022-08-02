@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Infrastructure\Laravel\Models\Account;
+use App\Domain\Models\Account;
 use Illuminate\Database\Seeder;
 
 class AccountsSeeder extends Seeder

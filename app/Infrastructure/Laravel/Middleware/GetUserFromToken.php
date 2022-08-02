@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Laravel\Middleware;
 
-use App\Infrastructure\Laravel\Models\Account;
+use App\Domain\Models\Account;
 use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

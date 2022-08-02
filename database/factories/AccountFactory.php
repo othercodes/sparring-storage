@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Infrastructure\Laravel\Models\Account;
+use App\Domain\Models\Account;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -11,6 +11,8 @@ use Illuminate\Support\Str;
  */
 class AccountFactory extends Factory
 {
+    protected $model = Account::class;
+
     /**
      * Define the model's default state.
      *

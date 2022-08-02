@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Infrastructure\Laravel\Models;
+namespace App\Domain\Models;
 
 use App\Infrastructure\Laravel\Traits\WithUuid;
+use Database\Factories\AccountFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -47,12 +48,12 @@ class Account extends Authenticatable
 
     public function isReseller(): bool
     {
-        return $this->type == 'reseller';
+        return $this->type == AccountType::Reseller;
     }
 
     public function isDistributor(): bool
     {
-        return $this->type == 'distributor';
+        return $this->type == AccountType::Distributor;
     }
 
     public function canHaveAPICredentials(): bool
@@ -79,5 +80,10 @@ class Account extends Authenticatable
                 $client = $clients->create($model->id, $model->name, '');
             }
         });
+    }
+
+    protected static function newFactory(): AccountFactory
+    {
+        return AccountFactory::new();
     }
 }

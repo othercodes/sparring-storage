@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Providers;
+namespace App\Infrastructure\Laravel\Providers;
 
-use App\Models\PassportToken;
+use App\Infrastructure\Laravel\Models\PassportToken;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
 

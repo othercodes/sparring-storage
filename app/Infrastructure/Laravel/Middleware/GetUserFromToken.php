@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Infrastructure\Laravel\Middleware;
 
-use App\Models\Account;
+use App\Infrastructure\Laravel\Models\Account;
 use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -27,7 +27,8 @@ class GetUserFromToken
                 ->parse(request()->bearerToken())
                 ->claims()
                 ->get('aud');
-            return Account::find((Client::find($clientId))->user_id);
+            $account = Client::find($clientId)->first();
+            return Account::find($account->user_id);
         });
 
         return $next($request);

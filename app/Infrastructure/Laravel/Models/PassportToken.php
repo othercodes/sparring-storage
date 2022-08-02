@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Infrastructure\Laravel\Models;
 
 
 use Laravel\Passport\Token;

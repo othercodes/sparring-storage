@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace App\Infrastructure\Laravel\Traits;
 
 use Illuminate\Support\Str;
 

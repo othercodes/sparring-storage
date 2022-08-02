@@ -13,4 +13,10 @@ class Plan extends Model
     public $incrementing = false;
 
     protected $primaryKey = 'sku';
+
+    protected $fillable = [
+        'name',
+        'sku',
+        'maximum',
+    ];
 }

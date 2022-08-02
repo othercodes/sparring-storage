@@ -1,0 +1,7 @@
+name, sku, maximum
+Storage 250 GB,	SPRRNG-STG-250GB, 1
+Storage 500 GB,	SPRRNG-STG-500GB, 1
+Storage 1TB, SPRRNG-STG-001TB, 1
+Storage 2TB, SPRRNG-STG-002TB, 1
+Secure Shared Connections, SPRRNG-SSC-001SHRD, 100
+Secure Streaming Connections, SPRRNG-SSC-001STRMNG, 100

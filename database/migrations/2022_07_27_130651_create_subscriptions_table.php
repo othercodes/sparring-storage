@@ -15,12 +15,24 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('plan_sku');
-            $table->uuid('account_id');
+            $table->foreignUuid('account_id')
+                ->references('id')
+                ->on('accounts')
+                ->onDelete('cascade');
+            $table->string('plan_sku');
+            $table->foreign('plan_sku')
+                ->references('sku')
+                ->on('plans')
+                ->onDelete('cascade');
             $table->integer('quantity');
             $table->string('status');
+            $table->timestamp('renewal_at');
             $table->timestamp('subscribed_at');
             $table->timestamps();
+
+
+
+
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Domain\Models;
 
+use App\Infrastructure\Laravel\Filters\Filterable;
 use App\Infrastructure\Laravel\Traits\WithUuid;
 use Database\Factories\AccountFactory;
 use Illuminate\Database\Eloquent\Builder;
@@ -19,9 +20,14 @@ use Laravel\Passport\HasApiTokens;
  */
 class Account extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, WithUuid;
+    use HasApiTokens, HasFactory, Notifiable, WithUuid, Filterable;
     protected $keyType = 'uuid';
     public $incrementing = false;
+
+    protected $fillable = [
+        'name'
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -48,12 +54,12 @@ class Account extends Authenticatable
 
     public function isReseller(): bool
     {
-        return $this->type == AccountType::Reseller;
+        return $this->type == 'reseller';
     }
 
     public function isDistributor(): bool
     {
-        return $this->type == AccountType::Distributor;
+        return $this->type == 'distributor';
     }
 
     public function canHaveAPICredentials(): bool
